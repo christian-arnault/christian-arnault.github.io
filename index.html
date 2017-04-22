@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link href="./styles/fonts/fonts.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="main.css">
+</head>
+<body ng-app="sophrologue" ng-controller="LandingCtrl">
+	<div id="app">
+		<div id="title">
+			<h1>Christian ARNAULT</h1>
+			<h2>Sophrologue</h2>
+			<h3>Orléans</h3>
+			<img src="./background.png" id="background">
+		</div>
+		<div id="content">
+			<h3>Formé à l'IFS à Paris, je vous propose des séances individuelles de sophrologie selon un protocole élaboré en fonction de vos besoins:</h3>
+			<md-list>
+				<md-list-item ng-repeat="seance in seances" ng-click="goTo(seance.to)" class="md-2-line">
+					<div class="md-list-item-text">
+            			<h3>{{seance.title}}</h3>
+			            <p ng-if="seance.needs.length > 0">{{seance.needs.join(', ')}}, etc...</p>
+					</div>
+				</md-list-item>
+			</md-list>
+			<md-button ng-click="toggleSidenav()" class="md-raised">Contactez moi</md-button>
+		</div>
+	</div>
+	<div style="clear: left; min-height: 100vh; background: url('./background-budha.jpg') no-repeat center center; background-size:cover;">
+		<div style="padding: 100px 50px;">
+			<h1 style="color: white;">
+				La Sophrologie
+			</h1>
+			<p style="max-width: 500px; color: #AAA">La sophrologie a été créée en 1960 par Alfonso Caycedo, médecin neuropsychiatre colombien ayant étudié l'hypnose, après un voyage en Inde avec sa femme adepte du yoga5. Il l'a ensuite renommée en sophrologie caycédienne pour se distinguer d'autres courants de la même méthode apparus par la suite.</p>
+			<p style="max-width: 500px; color: #EEE; font-size: 2em">"Lorem ipsum dolor sit amet, consectetur adipisicing elit.", Thomas Solta</p>
+			<p style="max-width: 500px; color: #AAA">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum aperiam fugit ullam expedita ea voluptatibus deserunt voluptatem, explicabo eius eligendi totam qui et error tempora at dicta ad. Voluptate, neque.</p>
+			<p style="max-width: 500px; color: #AAA">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit non harum possimus quaerat voluptatem eligendi reiciendis enim corporis quae at praesentium, explicabo sapiente. Non expedita, sed similique voluptates in aspernatur?</p>
+		</div>
+	</div>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+		<md-toolbar class="md-theme-light">
+			<h1 class="md-toolbar-tools">Contactez moi</h1>
+		</md-toolbar>
+		<md-content layout-padding>
+			<h3>Vous pouvez me contacter directement par email ou par téléphone:</h3>
+			<p>
+				<i class="fa fa-phone" aria-hidden="true"></i> 02-38-74-75-27<br>
+				<i class="fa fa-envelope-o" aria-hidden="true"></i> christian.arnault@gmail.com</p>
+
+			<h3>Alternativement, vous pouvez remplir ce formulaire:</h3>
+			
+			<form layout="column">
+				<md-input-container>
+					<label>Nom</label>
+					<input type="text" ng-model="name" md-autofocus>
+				</md-input-container>
+
+				<md-input-container>
+					<label>Email ou Téléphone</label>
+					<input type="text" ng-model="contact">
+				</md-input-container>
+
+				<md-input-container>
+					<label>Message</label>
+					<textarea ng-model="message"></textarea>
+				</md-input-container>
+        	</form>
+			<md-button ng-click="toggleSidenav()">
+				Annuler
+			</md-button>
+			<md-button ng-click="Send()" class="md-raised md-primary">
+				Envoyer
+			</md-button>
+      </md-content>
+
+    </md-sidenav>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+
+    <!-- AngularJS Material Javascript now available via Google CDN; version 1.0.7 used here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+
+	<script src="./main.js"></script>
+</body>
+</html>
